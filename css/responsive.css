@@ -1,0 +1,134 @@
+/* ============================================================
+   GEF - GESTOR DE FERRAGEM
+   responsive.css - Responsividade Mobile, Tablet e Desktop
+   ============================================================ */
+
+/* Tablet e Telas Médias (<= 1024px) */
+@media (max-width: 1024px) {
+  #app-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-xl);
+  }
+
+  #app-sidebar.sidebar-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.6);
+    z-index: 35;
+  }
+
+  .sidebar-backdrop.active {
+    display: block;
+  }
+
+  .navbar-toggle-btn {
+    display: flex;
+  }
+
+  #app-content {
+    padding: 16px;
+  }
+}
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+  #app-navbar {
+    padding: 0 16px;
+    height: 56px;
+  }
+
+  .navbar-title {
+    font-size: 1rem;
+  }
+
+  .navbar-store-selector {
+    display: none;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .page-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .page-actions .btn {
+    flex: 1;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-dialog {
+    margin: 12px;
+    max-height: 94vh;
+  }
+
+  .modal-header {
+    padding: 14px 18px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-footer {
+    padding: 14px 18px;
+    flex-direction: column-reverse;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  /* PDV Mobile: Carrinho e Produtos em Coluna */
+  .pos-container {
+    flex-direction: column !important;
+  }
+
+  .pos-cart-panel {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  /* Toasts em mobile */
+  #toast-container {
+    left: 16px;
+    right: 16px;
+    top: 16px;
+  }
+
+  .toast {
+    min-width: 100%;
+  }
+}
+
+/* Touch Targets para Mobile */
+@media (pointer: coarse) {
+  .btn, .form-control, .menu-item, .pagination-btn {
+    min-height: 44px;
+  }
+
+  .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
