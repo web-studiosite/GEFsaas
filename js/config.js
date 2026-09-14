@@ -6,8 +6,8 @@
 // Chaves padrão para o Supabase (podem ser substituídas nas Configurações da aplicação)
 export const DEFAULT_CONFIG = {
   // Configuração padrão do Supabase
-  supabaseUrl: 'https://xyzcompany.supabase.co',
-  supabaseAnonKey: 'public-anon-key-placeholder',
+  supabaseUrl: 'https://whlforiaflmzymfemfqz.supabase.co',
+  supabaseAnonKey: 'peyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndobGZvcmlhZmxtenltZmVtZnF6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0MDU4MzYsImV4cCI6MjEwNDk4MTgzNn0.OlD1NVepnfAFfRjMaupPAEuL8aQ-IGXWUZrbqsoNVho',
 
   // Dados da Empresa / Loja Padrão em Moçambique
   companyName: 'GEF - Gestor de Ferragem Moçambique',
