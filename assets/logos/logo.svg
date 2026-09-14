@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="100" fill="#0f172a"/>
+  <!-- Martelo e Chave cruzados / Ferragem -->
+  <g transform="translate(96, 96) scale(0.625)">
+    <!-- Big Hammer -->
+    <path d="M120 70 L200 150 L160 190 L80 110 Z" fill="#94a3b8"/>
+    <path d="M155 105 L260 210 L300 170 L195 65 Z" fill="#cbd5e1"/>
+    <rect x="235" y="185" width="40" height="280" rx="12" transform="rotate(45 255 325)" fill="#b45309"/>
+    <!-- Wrench -->
+    <circle cx="340" cy="140" r="45" fill="none" stroke="#f59e0b" stroke-width="24"/>
+    <rect x="330" y="115" width="20" height="30" fill="#0f172a"/>
+    <rect x="170" y="270" width="36" height="230" rx="10" transform="rotate(-45 188 385)" fill="#f59e0b"/>
+  </g>
+  <text x="256" y="440" font-family="system-ui, sans-serif" font-weight="900" font-size="54" fill="#ffffff" text-anchor="middle" letter-spacing="4">GEF FERRAGEM</text>
+</svg>
