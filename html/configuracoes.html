@@ -1,0 +1,135 @@
+<!-- GEF - Gestor de Ferragem Moçambique: Configurações do Sistema & Supabase -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Configurações do GEF Moçambique & Conexão Supabase</h2>
+      <p>Personalize os dados da sua ferragem, contactos M-Pesa, e-Mola, NIB bancário e modelos de mensagens por WhatsApp/SMS</p>
+    </div>
+    <div class="page-actions">
+      <button id="btn-save-all-config" class="btn btn-primary">
+        Salvar Configurações
+      </button>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 24px;">
+
+    <!-- Assistente de Conexão Supabase -->
+    <div class="card" style="border: 2px solid #0284c7;">
+      <div class="card-header" style="background-color: #f0f9ff;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="width: 28px; height: 28px; border-radius: 6px; background: #0284c7; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900;">
+            ⚡
+          </div>
+          <div>
+            <h3 class="card-title" style="color: #0369a1;">Assistente de Conexão com o Supabase</h3>
+            <p style="font-size: 0.8125rem; color: #0284c7; margin: 0;">Configure a URL e chave anónima para persistência em nuvem multi-lojas e multi-usuários</p>
+          </div>
+        </div>
+        <div id="supabase-status-badge">
+          <!-- Status via JS -->
+        </div>
+      </div>
+
+      <div style="padding: 20px;">
+        <div class="form-row">
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label" for="cfg-supabase-url">URL do Projecto Supabase</label>
+            <input type="url" id="cfg-supabase-url" class="form-control" placeholder="https://xxxxxxxxxxxx.supabase.co" />
+            <div class="form-feedback">Disponível no painel do Supabase em Project Settings > API.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-supabase-key">Chave Pública (anon key)</label>
+            <input type="password" id="cfg-supabase-key" class="form-control" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..." />
+            <div class="form-feedback">Chave pública segura para clientes web.</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap;">
+          <button id="btn-test-supabase" class="btn btn-outline">
+            Testar Conexão Agora
+          </button>
+          <button id="btn-view-sql" class="btn btn-outline">
+            Copiar Script SQL do Banco (DDL)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dados Comerciais da Ferragem em Moçambique -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Dados Comerciais da Ferragem (Moçambique)</h3>
+      </div>
+      <div style="padding: 20px;">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cfg-trade-name">Nome Comercial da Ferragem</label>
+            <input type="text" id="cfg-trade-name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-company-name">Denominação Social</label>
+            <input type="text" id="cfg-company-name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-nuit">NUIT (Número de Identificação Tributária) <span class="required">*</span></label>
+            <input type="text" id="cfg-nuit" class="form-control" placeholder="Ex: 400123456 (9 dígitos)" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cfg-phone">Telemóvel / Contacto Principal (+258)</label>
+            <input type="tel" id="cfg-phone" class="form-control" placeholder="+258 84 123 4567" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-mpesa">Número M-Pesa (Vodacom) para Recebimentos</label>
+            <input type="text" id="cfg-mpesa" class="form-control" placeholder="84 123 4567" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-emola">Número e-Mola (Movitel) para Recebimentos</label>
+            <input type="text" id="cfg-emola" class="form-control" placeholder="86 123 4567" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="cfg-nib">NIB Bancário (Conta Corrente Loja)</label>
+            <input type="text" id="cfg-nib" class="form-control" placeholder="Ex: 0001 0000 12345678901 23 (BIM / BCI)" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-city">Cidade / Província</label>
+            <input type="text" id="cfg-city" class="form-control" placeholder="Maputo Cidade" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cfg-address">Endereço Completo / Bairro</label>
+            <input type="text" id="cfg-address" class="form-control" placeholder="Av. 24 de Julho, 1850, Bairro Central" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modelos de Mensagens de Cobrança e Recibo (WhatsApp e SMS) -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Modelos de Cobrança e Recibos Digitais (WhatsApp & SMS)</h3>
+      </div>
+      <div style="padding: 20px;">
+        <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 16px;">
+          Tags dinâmicas suportadas: <code>[CLIENTE]</code>, <code>[VALOR]</code>, <code>[DATA]</code>, <code>[MPESA]</code>, <code>[EMOLA]</code>, <code>[NIB]</code>, <code>[LOJA]</code>, <code>[FONE]</code>
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="cfg-wa-template">Modelo de Cobrança de Saldo via WhatsApp</label>
+          <textarea id="cfg-wa-template" class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="cfg-sms-template">Modelo de Cobrança via SMS (Mensagem Curta)</label>
+          <textarea id="cfg-sms-template" class="form-control" rows="2"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

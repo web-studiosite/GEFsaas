@@ -1,0 +1,32 @@
+<!-- GEF - Gestor de Ferragem: Histórico de Vendas & Recibos Digitais -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Histórico de Vendas & Recibos</h2>
+      <p>Consulte todas as operações de balcão, reimprima ou reenvie comprovantes por WhatsApp e SMS</p>
+    </div>
+  </div>
+
+  <!-- Filtros -->
+  <div class="card" style="margin-bottom: 20px; padding: 16px;">
+    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <div class="search-box" style="flex: 1; min-width: 260px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="vendas-search-input" class="form-control" placeholder="Buscar por número da venda, cliente ou atendente..." />
+      </div>
+      <select id="vendas-filter-status" class="form-control" style="width: 180px;">
+        <option value="">Todos os status</option>
+        <option value="finalizada" selected>Finalizadas</option>
+        <option value="cancelada">Canceladas</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabela de Vendas -->
+  <div id="vendas-table-container">
+    <!-- Injetado via JS -->
+  </div>
+</div>

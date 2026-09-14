@@ -1,0 +1,117 @@
+<!-- GEF - Gestor de Ferragem: Clientes & Sistema de Cobrança WhatsApp / SMS -->
+<div>
+  <!-- Header da Página -->
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Clientes & Central de Cobrança</h2>
+      <p>Gerenciamento de contatos, limite de fiado, envio de cobranças por WhatsApp/SMS e recibos</p>
+    </div>
+    <div class="page-actions">
+      <button id="btn-novo-cliente" class="btn btn-primary">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Cadastrar Cliente</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Abas de Navegação do Módulo -->
+  <div style="display: flex; gap: 8px; border-bottom: 1px solid var(--border-medium); margin-bottom: 20px;">
+    <button id="tab-btn-lista" class="btn btn-outline active-tab-btn" style="border-bottom: 3px solid var(--primary); font-weight: 700; border-radius: 0; padding: 10px 18px;">
+      Lista de Contatos de Clientes
+    </button>
+    <button id="tab-btn-cobranca" class="btn btn-outline" style="border-bottom: 3px solid transparent; font-weight: 600; border-radius: 0; padding: 10px 18px;">
+      💬 Central de Cobrança WhatsApp & SMS
+    </button>
+  </div>
+
+  <!-- Conteúdo da Aba 1: Lista de Contatos -->
+  <div id="tab-content-lista">
+    <!-- Barra de Filtros e Busca -->
+    <div class="card" style="margin-bottom: 20px; padding: 16px;">
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <div class="search-box" style="flex: 1; min-width: 280px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input 
+            type="text" 
+            id="clientes-search-input" 
+            class="form-control" 
+            placeholder="Buscar por nome do cliente, documento, telefone, bairro ou obra..." 
+          />
+        </div>
+        <select id="clientes-filter-status" class="form-control" style="width: 180px;">
+          <option value="">Todos os status</option>
+          <option value="ativo">Ativos</option>
+          <option value="bloqueado">Bloqueados</option>
+          <option value="inadimplente">Inadimplentes</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tabela de Clientes -->
+    <div id="clientes-table-container">
+      <!-- Injetado via JS -->
+    </div>
+  </div>
+
+  <!-- Conteúdo da Aba 2: Central de Cobrança WhatsApp & SMS -->
+  <div id="tab-content-cobranca" style="display: none;">
+    <!-- Resumo de Inadimplência & Fiado -->
+    <div class="kpi-grid" style="margin-bottom: 20px;">
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Total em Aberto (Fiado)</h3>
+          <div class="kpi-value" style="color: var(--danger);" id="cobranca-kpi-total">R$ 0,00</div>
+          <div class="kpi-subtext" id="cobranca-kpi-count">0 clientes devedores</div>
+        </div>
+        <div class="kpi-icon-box" style="color: var(--danger); background-color: var(--danger-light);">
+          <svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+            <line x1="1" y1="10" x2="23" y2="10"></line>
+          </svg>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Canal Rápido WhatsApp</h3>
+          <div style="font-size: 0.9375rem; font-weight: 700; color: #16a34a; margin-top: 6px;">Envio com 1 Clique</div>
+          <div class="kpi-subtext">Link wa.me com chave Pix e extrato</div>
+        </div>
+        <div class="kpi-icon-box" style="color: #16a34a; background-color: #dcfce7;">
+          <svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-info">
+          <h3>Canal SMS Celular</h3>
+          <div style="font-size: 0.9375rem; font-weight: 700; color: #0284c7; margin-top: 6px;">Protocolo Nativo</div>
+          <div class="kpi-subtext">Abre app de SMS no aparelho</div>
+        </div>
+        <div class="kpi-icon-box" style="color: #0284c7; background-color: #e0f2fe;">
+          <svg style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de Cobranças Pendentes -->
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Faturas de Ferragem em Aberto para Disparo de Cobrança</h3>
+      </div>
+      <div id="cobranca-table-container">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+</div>

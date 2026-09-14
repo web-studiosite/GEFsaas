@@ -1,0 +1,103 @@
+<!-- GEF - Gestor de Ferragem: Tela de Autenticação Real -->
+<div style="min-height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; background-color: #0f172a; padding: 20px;">
+  <div style="width: 100%; max-width: 440px; background: #1e293b; border: 1px solid #334155; border-radius: var(--radius-lg); padding: 36px 32px; box-shadow: var(--shadow-xl); color: #ffffff;">
+    
+    <!-- Logo e Cabeçalho -->
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div style="width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, #d97706, #f59e0b); color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem; margin: 0 auto 12px auto; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+        GEF
+      </div>
+      <h1 style="font-size: 1.5rem; font-weight: 800; color: #ffffff;">GEF - Gestor de Ferragem</h1>
+      <p style="font-size: 0.875rem; color: #94a3b8; margin-top: 4px;">SaaS ERP Multi-tenant para Lojas de Ferragem</p>
+    </div>
+
+    <!-- Abas: Entrar / Nova Conta -->
+    <div style="display: flex; background: #0f172a; border-radius: 8px; padding: 4px; margin-bottom: 20px;">
+      <button type="button" id="tab-btn-login" style="flex: 1; padding: 8px; font-size: 0.875rem; font-weight: 600; border-radius: 6px; border: none; background: #d97706; color: #ffffff; cursor: pointer;">
+        Acessar Conta
+      </button>
+      <button type="button" id="tab-btn-register" style="flex: 1; padding: 8px; font-size: 0.875rem; font-weight: 600; border-radius: 6px; border: none; background: transparent; color: #94a3b8; cursor: pointer;">
+        Nova Ferragem
+      </button>
+    </div>
+
+    <div id="login-alert-container"></div>
+
+    <!-- Formulário de Login -->
+    <form id="login-form">
+      <div class="form-group" style="margin-bottom: 16px;">
+        <label class="form-label" style="color: #cbd5e1;" for="login-email">E-mail corporativo</label>
+        <input 
+          type="email" 
+          id="login-email" 
+          class="form-control" 
+          style="background-color: #0f172a; border-color: #475569; color: #ffffff;" 
+          placeholder="seu.email@ferragem.com.br" 
+          required 
+          autocomplete="email"
+        />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 22px;">
+        <label class="form-label" style="color: #cbd5e1;" for="login-password">Senha de acesso</label>
+        <input 
+          type="password" 
+          id="login-password" 
+          class="form-control" 
+          style="background-color: #0f172a; border-color: #475569; color: #ffffff;" 
+          placeholder="••••••••" 
+          required 
+          autocomplete="current-password"
+        />
+      </div>
+
+      <button type="submit" id="btn-submit-login" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem; font-weight: 700;">
+        Entrar no Sistema
+      </button>
+    </form>
+
+    <!-- Formulário de Cadastro de Novo Tenant (com código de embaixador se houver) -->
+    <form id="register-form" style="display: none;">
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-company-name">Nome da Ferragem / Empresa</label>
+        <input type="text" id="reg-company-name" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="Ferragem & Materiais São Pedro" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-document">CNPJ ou CPF</label>
+        <input type="text" id="reg-document" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="00.000.000/0001-00" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-admin-name">Nome do Administrador</label>
+        <input type="text" id="reg-admin-name" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="Carlos Silveira" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-email">E-mail corporativo</label>
+        <input type="email" id="reg-email" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="contato@ferragem.com.br" required />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 12px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-password">Senha de acesso (mínimo 6 dígitos)</label>
+        <input type="password" id="reg-password" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="••••••••" required minlength="6" />
+      </div>
+
+      <div class="form-group" style="margin-bottom: 18px;">
+        <label class="form-label" style="color: #cbd5e1;" for="reg-referral-code">Código de Indicação (Opcional / Embaixador)</label>
+        <input type="text" id="reg-referral-code" class="form-control" style="background-color: #0f172a; border-color: #475569; color: #ffffff;" placeholder="Ex: OBRA2026" />
+      </div>
+
+      <button type="submit" id="btn-submit-register" class="btn btn-primary" style="width: 100%; padding: 12px; font-size: 1rem; font-weight: 700;">
+        Criar Minha Conta & Ferragem
+      </button>
+    </form>
+
+    <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #334155; text-align: center;">
+      <p style="font-size: 0.8125rem; color: #94a3b8;">
+        Autenticação exclusiva via <strong>Supabase Auth</strong>. RLS Multi-tenant Ativo.
+      </p>
+    </div>
+
+  </div>
+</div>

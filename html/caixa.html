@@ -1,0 +1,74 @@
+<!-- GEF - Gestor de Ferragem: Frente de Caixa & Fechamento de Turno -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Controle de Caixa & Turno</h2>
+      <p>Abertura com troco, sangrias de segurança, suprimentos e fechamento com conferência</p>
+    </div>
+    <div class="page-actions" id="caixa-header-actions">
+      <!-- Botões dinâmicos via JS -->
+    </div>
+  </div>
+
+  <!-- Banner do Status da Sessão -->
+  <div id="caixa-status-banner" class="card" style="margin-bottom: 24px; padding: 24px; border-left: 6px solid var(--primary);">
+    <!-- Injetado via JS -->
+  </div>
+
+  <!-- Métricas do Caixa Aberto -->
+  <div id="caixa-metrics-grid" class="kpi-grid" style="display: none; margin-bottom: 24px;">
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Fundo de Troco Inicial</h3>
+        <div class="kpi-value" id="cx-kpi-opening">R$ 0,00</div>
+        <div class="kpi-subtext">Valor de abertura</div>
+      </div>
+      <div class="kpi-icon-box" style="color:var(--text-secondary); background:var(--bg-surface-subtle);">
+        💵
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Entradas em Dinheiro</h3>
+        <div class="kpi-value" style="color:var(--success);" id="cx-kpi-cash-in">R$ 0,00</div>
+        <div class="kpi-subtext">Vendas + Fiados pagos</div>
+      </div>
+      <div class="kpi-icon-box" style="color:var(--success); background:var(--success-light);">
+        📈
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Vendas Pix & Cartões</h3>
+        <div class="kpi-value" style="color:var(--primary);" id="cx-kpi-digital-in">R$ 0,00</div>
+        <div class="kpi-subtext">Entradas eletrônicas</div>
+      </div>
+      <div class="kpi-icon-box" style="color:var(--primary); background:var(--primary-light);">
+        ⚡
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Sangrias (Retiradas)</h3>
+        <div class="kpi-value" style="color:var(--danger);" id="cx-kpi-sangrias">R$ 0,00</div>
+        <div class="kpi-subtext">Saídas da gaveta</div>
+      </div>
+      <div class="kpi-icon-box" style="color:var(--danger); background:var(--danger-light);">
+        📉
+      </div>
+    </div>
+  </div>
+
+  <!-- Movimentações Recentes do Caixa -->
+  <div class="card" id="caixa-movements-card" style="display: none;">
+    <div class="card-header">
+      <h3 class="card-title">Movimentações Financeiras Deste Turno</h3>
+    </div>
+    <div id="caixa-movements-table">
+      <!-- Injetado via JS -->
+    </div>
+  </div>
+</div>

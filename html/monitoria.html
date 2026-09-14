@@ -1,0 +1,213 @@
+<!-- GEF - Gestor de Ferragem: Central de Monitoria da Plataforma SaaS -->
+<div class="monitoria-container">
+  <div class="page-header" style="margin-bottom: 24px;">
+    <div class="page-title-group">
+      <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary);">Monitoria Operacional da Plataforma SaaS</h2>
+      <p style="color: var(--text-secondary); font-size: 0.875rem;">Visão superior da plataforma: controle de tenants, bloqueios por período, mensalidades e embaixadores</p>
+    </div>
+    <div class="page-actions" style="display: flex; gap: 10px;">
+      <button id="btn-new-tenant" class="btn btn-primary btn-sm">
+        + Cadastrar Novo Tenant
+      </button>
+      <button id="btn-refresh-monitor" class="btn btn-outline btn-sm">
+        Atualizar Dados
+      </button>
+    </div>
+  </div>
+
+  <!-- Abas de Navegação do Monitor -->
+  <div class="monitor-tabs" style="display: flex; gap: 8px; border-bottom: 2px solid var(--border-color); margin-bottom: 24px;">
+    <button type="button" class="monitor-tab-btn active" data-tab="tenants" style="padding: 10px 18px; font-weight: 700; font-size: 0.875rem; border: none; background: transparent; cursor: pointer; border-bottom: 3px solid var(--primary); color: var(--primary);">
+      Tenants & Lojas
+    </button>
+    <button type="button" class="monitor-tab-btn" data-tab="subscriptions" style="padding: 10px 18px; font-weight: 700; font-size: 0.875rem; border: none; background: transparent; cursor: pointer; color: var(--text-secondary);">
+      Mensalidades & Assinaturas
+    </button>
+    <button type="button" class="monitor-tab-btn" data-tab="ambassadors" style="padding: 10px 18px; font-weight: 700; font-size: 0.875rem; border: none; background: transparent; cursor: pointer; color: var(--text-secondary);">
+      Embaixadores & Comissões
+    </button>
+    <button type="button" class="monitor-tab-btn" data-tab="events" style="padding: 10px 18px; font-weight: 700; font-size: 0.875rem; border: none; background: transparent; cursor: pointer; color: var(--text-secondary);">
+      Feed de Atividades em Tempo Real
+    </button>
+  </div>
+
+  <!-- ABA 1: TENANTS & LOJAS -->
+  <div id="tab-content-tenants" class="monitor-tab-pane">
+    <div class="card">
+      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="card-title">Empresas e Ferragens Contratantes</h3>
+        <span id="tenants-count-badge" class="badge badge-info">0 empresas</span>
+      </div>
+      <div id="tenants-table-container" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 2: MENSALIDADES -->
+  <div id="tab-content-subscriptions" class="monitor-tab-pane" style="display: none;">
+    <div class="card">
+      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="card-title">Controle Financeiro de Assinaturas</h3>
+        <span class="badge badge-warning">Regra de Inadimplência</span>
+      </div>
+      <div id="subscriptions-table-container" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 3: EMBAIXADORES & COMISSÕES -->
+  <div id="tab-content-ambassadors" class="monitor-tab-pane" style="display: none;">
+    <div class="card" style="margin-bottom: 20px;">
+      <div class="card-header" style="display: flex; justify-content: space-between; align-items: center;">
+        <h3 class="card-title">Comissões Acumuladas da Plataforma</h3>
+      </div>
+      <div id="commissions-table-container" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA 4: EVENTOS EM TEMPO REAL -->
+  <div id="tab-content-events" class="monitor-tab-pane" style="display: none;">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Trilha Operacional em Tempo Real</h3>
+      </div>
+      <div id="monitoria-feed-container" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Cadastrar Novo Tenant -->
+<div id="modal-tenant" class="modal-overlay" style="display: none;">
+  <div class="modal-container" style="max-width: 540px;">
+    <div class="modal-header">
+      <h3 class="modal-title">Novo Tenant (Empresa SaaS)</h3>
+      <button class="btn-close-modal" id="btn-close-tenant-modal">&times;</button>
+    </div>
+    <form id="form-new-tenant">
+      <div class="modal-body">
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label" for="tenant-name">Razão Social / Nome da Ferragem *</label>
+          <input type="text" id="tenant-name" class="form-control" required placeholder="Ferragens Central Ltda" />
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label" for="tenant-document">CNPJ ou CPF *</label>
+          <input type="text" id="tenant-document" class="form-control" required placeholder="00.000.000/0001-00" />
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="tenant-plan">Plano Contratado *</label>
+            <select id="tenant-plan" class="form-control">
+              <option value="STARTER">STARTER (1 Loja)</option>
+              <option value="PRO" selected>PRO (Até 3 Lojas)</option>
+              <option value="ENTERPRISE">ENTERPRISE (Ilimitado)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="tenant-fee">Valor Mensal (R$) *</label>
+            <input type="number" step="0.01" id="tenant-fee" class="form-control" value="149.90" required />
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="tenant-email">E-mail de Contato *</label>
+            <input type="email" id="tenant-email" class="form-control" required placeholder="financeiro@empresa.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="tenant-phone">Telefone / WhatsApp</label>
+            <input type="text" id="tenant-phone" class="form-control" placeholder="(11) 99999-0000" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-close-modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar Tenant</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Bloqueio / Liberação de Tenant -->
+<div id="modal-block-tenant" class="modal-overlay" style="display: none;">
+  <div class="modal-container" style="max-width: 480px;">
+    <div class="modal-header">
+      <h3 class="modal-title" id="block-modal-title">Gerenciar Bloqueio do Tenant</h3>
+      <button class="btn-close-modal" id="btn-close-block-modal">&times;</button>
+    </div>
+    <form id="form-block-tenant">
+      <input type="hidden" id="block-tenant-id" />
+      <div class="modal-body">
+        <div id="block-tenant-info" style="margin-bottom: 16px; font-weight: 600; color: var(--text-primary);"></div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label" for="block-reason">Motivo do Bloqueio *</label>
+          <select id="block-reason-select" class="form-control" style="margin-bottom: 8px;">
+            <option value="Inadimplência de Mensalidade">Inadimplência de Mensalidade</option>
+            <option value="Violação dos Termos de Uso">Violação dos Termos de Uso</option>
+            <option value="Suspensão a Pedido do Cliente">Suspensão a Pedido do Cliente</option>
+            <option value="Outro Motivo">Outro Motivo</option>
+          </select>
+          <input type="text" id="block-reason-custom" class="form-control" placeholder="Especifique o motivo..." />
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div class="form-group">
+            <label class="form-label" for="block-from">Início do Bloqueio *</label>
+            <input type="datetime-local" id="block-from" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="block-until">Fim do Bloqueio (Opcional)</label>
+            <input type="datetime-local" id="block-until" class="form-control" />
+          </div>
+        </div>
+        <p style="font-size: 0.8125rem; color: var(--text-muted);">
+          * O bloqueio impede autenticação e transações comerciais dos usuários vinculados a este tenant.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-close-modal">Cancelar</button>
+        <button type="submit" class="btn btn-danger" id="btn-confirm-block">Aplicar Bloqueio</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Registrar Pagamento de Mensalidade -->
+<div id="modal-sub-payment" class="modal-overlay" style="display: none;">
+  <div class="modal-container" style="max-width: 440px;">
+    <div class="modal-header">
+      <h3 class="modal-title">Confirmar Mensalidade</h3>
+      <button class="btn-close-modal" id="btn-close-sub-modal">&times;</button>
+    </div>
+    <form id="form-sub-payment">
+      <input type="hidden" id="sub-pay-tenant-id" />
+      <div class="modal-body">
+        <p id="sub-pay-tenant-label" style="font-weight: 700; margin-bottom: 12px;"></p>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label" for="sub-pay-amount">Valor Recebido (R$) *</label>
+          <input type="number" step="0.01" id="sub-pay-amount" class="form-control" required />
+        </div>
+        <div class="form-group" style="margin-bottom: 12px;">
+          <label class="form-label" for="sub-pay-method">Forma de Pagamento *</label>
+          <select id="sub-pay-method" class="form-control">
+            <option value="PIX">PIX</option>
+            <option value="BOLETO">Boleto Bancário</option>
+            <option value="CARTAO">Cartão de Crédito</option>
+            <option value="TRANSFERENCIA">Transferência</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-pay-ref">Identificador / Comprovante</label>
+          <input type="text" id="sub-pay-ref" class="form-control" placeholder="TXID do Pix ou Doc" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline btn-close-modal">Cancelar</button>
+        <button type="submit" class="btn btn-success">Confirmar & Quitar</button>
+      </div>
+    </form>
+  </div>
+</div>

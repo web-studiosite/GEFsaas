@@ -1,0 +1,55 @@
+<!-- GEF - Gestor de Ferragem: Relatórios & Indicadores Gerenciais -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Relatórios Gerenciais da Ferragem</h2>
+      <p>Análise financeira de faturamento, distribuição de pagamentos, fiado e produtos mais vendidos</p>
+    </div>
+  </div>
+
+  <div class="kpi-grid" style="margin-bottom: 24px;">
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Faturamento Consolidado</h3>
+        <div class="kpi-value" id="rel-kpi-total">R$ 0,00</div>
+        <div class="kpi-subtext" id="rel-kpi-sales">0 vendas concluídas</div>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Volume em Dinheiro & Pix</h3>
+        <div class="kpi-value" style="color:var(--success);" id="rel-kpi-cash-pix">R$ 0,00</div>
+        <div class="kpi-subtext">Liquidez imediata</div>
+      </div>
+    </div>
+
+    <div class="kpi-card">
+      <div class="kpi-info">
+        <h3>Total em Fiado Emitido</h3>
+        <div class="kpi-value" style="color:var(--danger);" id="rel-kpi-fiado">R$ 0,00</div>
+        <div class="kpi-subtext">Vendas a prazo</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Distribuição por Forma de Pagamento</h3>
+      </div>
+      <div id="rel-payment-breakdown" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Top 5 Materiais Mais Vendidos</h3>
+      </div>
+      <div id="rel-top-products" style="padding: 16px;">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </div>
+</div>

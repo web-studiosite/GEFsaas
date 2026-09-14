@@ -1,0 +1,32 @@
+<!-- GEF - Gestor de Ferragem: Cotações & Orçamentos de Obra -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Orçamentos de Obra & Cotações</h2>
+      <p>Elabore cotações rápidas para pedreiros e construtoras, envie por WhatsApp/SMS e converta em venda</p>
+    </div>
+    <div class="page-actions">
+      <button id="btn-novo-orcamento" class="btn btn-primary">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Novo Orçamento</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 20px; padding: 16px;">
+    <div class="search-box" style="max-width: 400px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="orcamento-search-input" class="form-control" placeholder="Buscar por número, cliente ou obra..." />
+    </div>
+  </div>
+
+  <div id="orcamentos-table-container">
+    <!-- Injetado via JS -->
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<!-- GEF - Gestor de Ferragem Moçambique: PDV / Frente de Caixa Rápido -->
+<div class="pos-container" style="display: flex; gap: 20px; height: calc(100vh - 110px);">
+  
+  <!-- Coluna da Esquerda: Catálogo e Busca de Ferragens -->
+  <div style="flex: 1; display: flex; flex-direction: column; overflow: hidden;" class="card">
+    
+    <!-- Barra de Pesquisa de Materiais -->
+    <div style="margin-bottom: 16px; display: flex; gap: 12px;">
+      <div class="search-box" style="flex: 1;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="pos-search-input" 
+          class="form-control" 
+          placeholder="Pesquisar ferragens por nome, código SKU ou código de barras... (F2)" 
+          autocomplete="off"
+        />
+      </div>
+      <button id="pos-btn-clear-search" class="btn btn-outline" style="display: none;">Limpar</button>
+    </div>
+
+    <!-- Lista / Grid de Produtos -->
+    <div id="pos-products-list" style="flex: 1; overflow-y: auto; padding-right: 4px;">
+      <!-- Itens renderizados dinamicamente -->
+    </div>
+  </div>
+
+  <!-- Coluna da Direita: Carrinho, Totais e Fechamento -->
+  <div class="pos-cart-panel card" style="width: 440px; min-width: 440px; display: flex; flex-direction: column; padding: 18px;">
+    
+    <!-- Cabeçalho do Carrinho & Cliente -->
+    <div style="border-bottom: 1px solid var(--border-subtle); padding-bottom: 14px; margin-bottom: 12px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+        <h3 style="font-size: 1.0625rem; font-weight: 700;">Carrinho de Venda</h3>
+        <button id="pos-btn-clear-cart" class="btn btn-outline btn-sm" style="color: var(--danger);">Limpar</button>
+      </div>
+
+      <!-- Seletor de Cliente -->
+      <div class="form-group" style="margin-bottom: 0;">
+        <label class="form-label" style="font-size: 0.75rem;" for="pos-customer-select">Cliente / Destinatário do Recibo</label>
+        <select id="pos-customer-select" class="form-control" style="font-size: 0.875rem;">
+          <option value="">Consumidor Balcão (Avulso)</option>
+          <!-- Opções preenchidas via JS -->
+        </select>
+      </div>
+
+      <!-- Aviso de Saldo do Cliente / Fiado -->
+      <div id="pos-customer-debt-info" style="display: none; margin-top: 8px; font-size: 0.75rem; padding: 6px 10px; border-radius: var(--radius-sm); background-color: var(--warning-light); color: var(--warning-text);">
+        <!-- Ex: Limite de Crédito: 1.000,00 MT | Saldo Devedor Actual: 350,00 MT -->
+      </div>
+    </div>
+
+    <!-- Lista de Itens no Carrinho -->
+    <div id="pos-cart-items" style="flex: 1; overflow-y: auto; margin-bottom: 14px;">
+      <div style="text-align: center; color: var(--text-muted); padding: 40px 10px;">
+        <svg style="width: 42px; height: 42px; margin: 0 auto 10px auto; color: var(--border-strong);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <p style="font-size: 0.875rem;">Nenhum produto adicionado à venda.</p>
+      </div>
+    </div>
+
+    <!-- Totais e Formas de Pagamento -->
+    <div style="border-top: 1px solid var(--border-subtle); padding-top: 14px;">
+      <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.875rem; color: var(--text-secondary);">
+        <span>Subtotal</span>
+        <span id="pos-subtotal" style="font-weight: 600;">0,00 MT</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.875rem; color: var(--text-secondary);">
+        <span>Desconto (MT)</span>
+        <input type="number" id="pos-discount-input" class="form-control" style="width: 100px; padding: 4px 8px; text-align: right;" value="0" min="0" step="1" />
+      </div>
+
+      <div style="display: flex; justify-content: space-between; margin-bottom: 14px; font-size: 1.25rem; font-weight: 800; color: var(--text-primary);">
+        <span>Total a Pagar</span>
+        <span id="pos-total" style="color: var(--primary);">0,00 MT</span>
+      </div>
+
+      <!-- Botão de Finalizar Venda -->
+      <button id="pos-btn-checkout" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.0625rem;" disabled>
+        Finalizar Venda & Emitir Recibo
+      </button>
+    </div>
+
+  </div>
+</div>

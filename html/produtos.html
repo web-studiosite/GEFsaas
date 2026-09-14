@@ -1,0 +1,41 @@
+<!-- GEF - Gestor de Ferragem: Catálogo de Produtos e Ferragens -->
+<div>
+  <div class="page-header">
+    <div class="page-title-group">
+      <h2>Catálogo de Ferragens & Materiais</h2>
+      <p>Gestão de preços, estoques mínimos, unidades e localização nas prateleiras</p>
+    </div>
+    <div class="page-actions">
+      <button id="btn-novo-produto" class="btn btn-primary">
+        <svg style="width:16px;height:16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>Cadastrar Material / Ferragem</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Barra de Filtros -->
+  <div class="card" style="margin-bottom: 20px; padding: 16px;">
+    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <div class="search-box" style="flex: 1; min-width: 280px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="produtos-search-input" class="form-control" placeholder="Buscar por nome da ferragem, código SKU ou código de barras..." />
+      </div>
+      <select id="produtos-filter-stock" class="form-control" style="width: 200px;">
+        <option value="">Todos os estoques</option>
+        <option value="baixo">Estoque Baixo / Crítico</option>
+        <option value="zerado">Estoque Zerado</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabela de Produtos -->
+  <div id="produtos-table-container">
+    <!-- Injetado via JS -->
+  </div>
+</div>
