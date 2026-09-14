@@ -1,0 +1,6 @@
+{
+  "name": "GEF - Gestor de Ferragem",
+  "description": "Sistema de gestão comercial e ERP SaaS PWA para lojas de ferragem e materiais de construção com lista de clientes, cobrança WhatsApp/SMS e emissão de recibos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

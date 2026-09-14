@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>GEF - Gestor de Ferragem | ERP Comercial PWA</title>
+  <meta name="description" content="GEF - Gestor de Ferragem: Lista de contatos de clientes, sistema de cobrança WhatsApp e SMS, recibos por WhatsApp e SMS, PDV balcão e controle de estoque." />
+  <meta name="theme-color" content="#d97706" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="GEF Ferragem" />
+
+  <!-- Favicons e Ícones PWA -->
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.svg" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+
+  <!-- CSS Modular do Sistema -->
+  <link rel="stylesheet" href="./css/global.css" />
+  <link rel="stylesheet" href="./css/layout.css" />
+  <link rel="stylesheet" href="./css/components.css" />
+  <link rel="stylesheet" href="./css/forms.css" />
+  <link rel="stylesheet" href="./css/tables.css" />
+  <link rel="stylesheet" href="./css/responsive.css" />
+</head>
+<body>
+  <!-- Container Principal do Aplicativo -->
+  <div id="app-container" class="app-layout">
+    <!-- Backdrop do Menu Mobile -->
+    <div class="sidebar-backdrop"></div>
+
+    <!-- Barra Lateral de Navegação (Sidebar) -->
+    <aside id="app-sidebar" class="sidebar" aria-label="Menu Principal da Ferragem"></aside>
+
+    <!-- Área de Conteúdo Principal -->
+    <div class="main-wrapper">
+      <!-- Barra Superior (Navbar) -->
+      <header id="app-navbar" class="navbar" aria-label="Barra de Navegação Superior"></header>
+
+      <!-- Painel Dinâmico de Módulos (SPA Router) -->
+      <main id="app-content" class="content-area" role="main"></main>
+    </div>
+  </div>
+
+  <!-- Container de Alertas Toast -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Inicializador do Aplicativo GEF -->
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
